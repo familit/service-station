@@ -9,14 +9,6 @@
   </main>
 </template>
 
-<script>
+<script setup>
 import SearchClient from "../components/SearchClient.vue";
-
-export default {
-  name: 'SearchView',
-  components: {SearchClient}
-}
 </script>
-
-<style scoped>
-</style>
