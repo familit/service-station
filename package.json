@@ -1,0 +1,11 @@
+{
+  "name": "service-station",
+  "packageManager": "yarn@4.14.1",
+  "dependencies": {
+    "vue": "^3.5.40"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.2.0"
+  }
+}

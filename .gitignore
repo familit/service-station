@@ -2,5 +2,8 @@
 
 .idea/
 .vscode/
+.yarn/
+
+node_modules/
 
 .env.local
