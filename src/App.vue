@@ -1,3 +1,7 @@
-<template>
-  <h1>service-station</h1>
+<template lang="html">
+  <RouterView />
 </template>
+
+<script setup>
+
+</script>
