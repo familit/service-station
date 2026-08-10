@@ -1,3 +1,5 @@
+<script setup>
+</script>
 <template>
   <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark min-vh-100 w-100">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -5,12 +7,12 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li><a href="#" class="nav-link text-white">Карточка клиента</a></li>
-      <li><a href="#" class="nav-link text-white">Карточка автомобиля</a></li>
-      <li><a href="#" class="nav-link text-white">Заказ-наряды</a></li>
-      <li><a href="#" class="nav-link text-white">Календарь</a></li>
+      <RouterLink to="/client" class="nav-link text-white">Карточка клиента</RouterLink>
+      <RouterLink to="/car" class="nav-link text-white">Карточка автомобиля</RouterLink>
+      <RouterLink to="/work-order" class="nav-link text-white">Заказ-наряды</RouterLink>
+      <RouterLink to="/calendar" class="nav-link text-white">Календарь</RouterLink>
     </ul>
     <hr>
-    <a href="/" class="nav-link active" aria-current="page">Выйти из клиента</a>
+    <RouterLink to="/" class="nav-link">Выйти из клиента</RouterLink>
   </div>
 </template>
