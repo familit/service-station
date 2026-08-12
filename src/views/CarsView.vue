@@ -1,6 +1,6 @@
 <script setup>
 import Sidebar from "../components/Sidebar.vue";
-import CarCard from "../components/CarCard.vue";
+import CarCard from "../components/Card/CarCard.vue";
 import WorkOrderCard from "../components/WorkOrderCard.vue";
 </script>
 

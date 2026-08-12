@@ -1,6 +1,6 @@
 <script setup>
-import TextInput from "./Input/TextInput.vue";
-import NumberInput from "./Input/NumberInput.vue";
+import TextInput from "../Input/TextInput.vue";
+import NumberInput from "../Input/NumberInput.vue";
 import {ref} from "vue";
 
 const vehicle = ref({
