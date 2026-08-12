@@ -1,21 +1,15 @@
-# Tamplate of repository
+# Service station
 
-> [!WARNING]
-> You need to make edits to this repository in order to continue working correctly
+App for service station to manage of micro business
 
-## Fix first commit
+## Stack
 
-### Use Makefile
+- Vue
+- Vite
+- Bootstrap
 
-```bash
-make init
-```
-
-### Use git command
+## Deploy local
 
 ```bash
-git update-ref -d HEAD
-git add .
-git commit -m 'init: create repository'
-git push --force
+yarn dev
 ```
