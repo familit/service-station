@@ -28,6 +28,6 @@
 <template>
   <div class="input-group">
     <span class="input-group-text">{{ label }}</span>
-    <input class="form-control" type="text" :value="value" :id="id" :placeholder="placeholder" :readonly :required>
+    <input class="form-control" type="text" :value="value" :id="id" :name="id" :placeholder="placeholder" :readonly :required>
   </div>
 </template>

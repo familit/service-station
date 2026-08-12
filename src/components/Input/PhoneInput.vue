@@ -27,7 +27,7 @@
 <template>
   <div class="input-group">
     <span class="input-group-text">{{ label }}</span>
-    <input class="form-control" type="number" :value="value" :id="id" :placeholder="placeholder" :readonly :required min="9000000000" max="9999999999">
+    <input class="form-control" type="number" :value="value" :id="id" :name="id" :placeholder="placeholder" :readonly :required min="9000000000" max="9999999999">
     <a v-if="!required" :href="'tel:+7'+value" class="btn btn-outline-secondary"><i class="bi bi-telephone-fill"></i></a>
   </div>
 </template>
