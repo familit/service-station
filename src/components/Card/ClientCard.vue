@@ -1,26 +1,18 @@
 <script setup>
+import Button from "../Modal/Button.vue";
+import TextInput from "../Input/TextInput.vue";
+import PhoneInput from "../Input/PhoneInput.vue";
 </script>
 <template>
   <div class="card w-100">
     <div class="card-header d-flex align-items-center justify-content-between">
       <h5 class="h5">Информация о клиенте</h5>
-      <a href=""><i class="bi bi-pencil-square"></i></a>
+      <Button modal="client" image="bi bi-pencil-square" />
     </div>
     <div class="card-body d-flex flex-row align-items-center justify-content-between gap-5">
-      <div class="input-group">
-        <span class="input-group-text">Фамилия</span>
-        <input type="text" value='surname' id="surname" readonly class="form-control">
-      </div>
-      <div class="input-group">
-
-        <span class="input-group-text">Имя</span>
-        <input type="text" value='name' id="name" readonly class="form-control">
-      </div>
-      <div class="input-group">
-        <span class="input-group-text">Телефон</span>
-        <input type="number" value='9000000000' id="number" readonly class="form-control">
-        <a href="tel:+79000000000" class="btn btn-outline-secondary"><i class="bi bi-telephone-fill"></i></a>
-      </div>
+      <TextInput id="surname" label="Фамилия" readonly />
+      <TextInput id="name" label="Имя" readonly />
+      <PhoneInput id="phone" label="Телефон" readonly />
     </div>
   </div>
 </template>

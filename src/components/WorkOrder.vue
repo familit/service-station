@@ -9,18 +9,9 @@ import WorkOrderTable from "./WorkOrderTable.vue";
         #23423 Ford Focus 265.000 км 17.500 руб.
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <table class="table">
-          <thead>
-          <tr>
-            <th>№ п/п</th>
-            <th>Работа / Запчасть</th>
-            <th>Стоимость, руб.</th>
-          </tr>
-          </thead>
           <WorkOrderTable />
-        </table>
       </div>
     </div>
   </div>

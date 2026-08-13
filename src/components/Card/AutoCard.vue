@@ -1,8 +1,11 @@
+<script setup>
+import Button from "../Modal/Button.vue";
+</script>
 <template>
   <div class="card w-100">
-    <div class="card-header d-flex justify-content-between gap-5">
+    <div class="card-header d-flex justify-content-between align-items-center gap-5">
       <h5 class="h5">Информация об автомобилях</h5>
-      <a href=""><i class="bi bi-plus-circle-fill"></i></a>
+      <Button modal="vehicles" />
     </div>
     <div class="card-body d-flex flex-row align-items-center justify-content-between gap-5">
       <table class="table table-striped">
