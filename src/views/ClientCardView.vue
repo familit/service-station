@@ -1,11 +1,14 @@
 <script setup>
-import Sidebar from "../components/Sidebar.vue";
-import ClientCard from "../components/Card/ClientCard.vue";
-import AutoCard from "../components/Card/AutoCard.vue";
-import WorkOrderCard from "../components/WorkOrderCard.vue";
-import VehiclesModal from "../components/Modal/VehiclesModal.vue";
-import ClientModal from "../components/ClientModal.vue";
-import WorkOrderModal from "../components/Modal/WorkOrderModal.vue";
+import Sidebar from '../components/Sidebar.vue'
+import ClientCard from '../components/Card/ClientCard.vue'
+import AutoCard from '../components/Card/AutoCard.vue'
+import WorkOrderCard from '../components/WorkOrderCard.vue'
+import VehiclesModal from '../components/Modal/VehiclesModal.vue'
+import ClientModal from '../components/ClientModal.vue'
+import WorkOrderModal from '../components/Modal/WorkOrderModal.vue'
+import {useRoute} from "vue-router";
+
+const id = useRoute().params.id
 </script>
 
 <template>
@@ -15,7 +18,7 @@ import WorkOrderModal from "../components/Modal/WorkOrderModal.vue";
                 <Sidebar />
             </div>
             <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-5">
-                <ClientCard />
+                <ClientCard :id="id"/>
                 <AutoCard />
                 <WorkOrderCard />
             </div>
