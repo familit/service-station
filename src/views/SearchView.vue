@@ -9,7 +9,7 @@
     </div>
   </main>
 
-  <ClientModal />
+  <ClientModal method="create" />
 </template>
 
 <script setup>
