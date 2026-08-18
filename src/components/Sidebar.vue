@@ -8,7 +8,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <RouterLink to="/client" class="nav-link text-white">Карточка клиента</RouterLink>
-      <RouterLink to="/car" class="nav-link text-white">Карточка автомобиля</RouterLink>
+      <RouterLink to="/vehicle" class="nav-link text-white">Карточка автомобиля</RouterLink>
       <RouterLink to="/work-order" class="nav-link text-white">Заказ-наряды</RouterLink>
       <RouterLink to="/calendar" class="nav-link text-white">Календарь</RouterLink>
     </ul>

@@ -4,6 +4,7 @@ import TextInput from "../Input/TextInput.vue";
 import PhoneInput from "../Input/PhoneInput.vue";
 import {onBeforeMount} from "vue";
 import {useClients} from "../../composables/useClients";
+import Loading from "../Loading.vue";
 
 const props = defineProps({
     id: { type: String, required: true },
@@ -27,10 +28,7 @@ onBeforeMount(async () => {
       <PhoneInput id="phone" label="Телефон" v-model="client.phone" readonly />
     </div>
       <div v-else class="card-body d-flex flex-row align-items-center justify-content-center gap-5">
-          <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
-          </div>
-          <p class="text-center fs-5 mb-0">Информация загружается</p>
+          <Loading />
       </div>
   </div>
 </template>

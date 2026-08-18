@@ -8,7 +8,7 @@ import WorkOrderView from "../views/WorkOrderView.vue";
 const routes = [
     { path: '/', component: SearchView },
     { path: '/client/:id', component: ClientCardView },
-    { path: '/car', component: VehicleView },
+    { path: '/vehicle/:id', component: VehicleView },
     { path: '/work-order', component: WorkOrderView },
 ]
 
