@@ -1,5 +1,4 @@
 <script setup>
-
 import TextInput from "../Input/TextInput.vue";
 import NumberInput from "../Input/NumberInput.vue";
 import WorkOrderTable from "../WorkOrderTable.vue";
@@ -33,7 +32,3 @@ import Button from "./Button.vue";
         </div>
     </div>
 </template>
-
-<style scoped>
-
-</style>

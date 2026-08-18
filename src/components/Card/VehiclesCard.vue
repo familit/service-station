@@ -1,8 +1,8 @@
 <script setup>
-import Button from "../Modal/Button.vue";
-import {onBeforeMount} from "vue";
-import {useVehicles} from "../../composables/useVehicles";
-import {useRoute} from "vue-router";
+import { onBeforeMount } from "vue";
+import { useVehicles } from "../../composables/useVehicles";
+import { useRoute } from "vue-router";
+import CardHeader from "./CardHeader.vue";
 
 const route = useRoute()
 const { vehicles, getByClientId, loading } = useVehicles()
@@ -13,10 +13,7 @@ onBeforeMount(async () => {
 </script>
 <template>
     <div class="card w-100">
-        <div class="card-header d-flex justify-content-between align-items-center gap-5">
-            <h5 class="h5">Информация об автомобилях</h5>
-            <Button modal="vehicles" />
-        </div>
+        <CardHeader action="add" modal="vehicles">Информация об автомобилях</CardHeader>
         <div v-if="loading" class="card-body d-flex flex-row align-items-center justify-content-center gap-5">
             <Loading />
         </div>

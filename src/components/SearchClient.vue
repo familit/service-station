@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
   <form action="#" method="post" class="input-group">
     <input type="text" class="form-control">
@@ -13,7 +9,3 @@
     <input type="submit" value="Найти" id="submit" class="btn btn-primary">
   </form>
 </template>
-
-<style scoped>
-
-</style>

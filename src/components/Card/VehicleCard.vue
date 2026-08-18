@@ -1,9 +1,10 @@
 <script setup>
 import TextInput from "../Input/TextInput.vue";
 import NumberInput from "../Input/NumberInput.vue";
-import {useVehicles} from "../../composables/useVehicles";
-import {onBeforeMount} from "vue";
+import { useVehicles } from "../../composables/useVehicles";
+import { onBeforeMount } from "vue";
 import Loading from "../Loading.vue";
+import CardHeader from "./CardHeader.vue";
 
 const props = defineProps({
     id: {type: String, required: true},
@@ -17,10 +18,7 @@ onBeforeMount(async () => {
 </script>
 <template>
     <div class="card w-100">
-        <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="h5">Информация об автомобиле</h5>
-            <a href=""><i class="bi bi-pencil-square"></i></a>
-        </div>
+        <CardHeader modal="vehicles" action="edit">Информация об автомобиле</CardHeader>
         <div v-if="vehicle" class="card-body d-flex flex-column align-items-center justify-content-between gap-5">
             <div class="d-flex flex-row align-items-center justify-content-between gap-5 w-100">
                 <TextInput id="brand" label="Марка" v-model="vehicle.brand" readonly />
