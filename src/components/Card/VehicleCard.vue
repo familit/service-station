@@ -3,7 +3,6 @@ import TextInput from "../Input/TextInput.vue";
 import NumberInput from "../Input/NumberInput.vue";
 import { useVehicles } from "../../composables/useVehicles";
 import { onBeforeMount } from "vue";
-import Loading from "../Loading.vue";
 import CardHeader from "./CardHeader.vue";
 import CardBody from "./CardBody.vue";
 
@@ -20,7 +19,7 @@ onBeforeMount(async () => {
 <template>
     <div class="card w-100">
         <CardHeader modal="vehicles" action="edit">Информация об автомобиле</CardHeader>
-        <CardBody :status="loading">
+        <CardBody :status="loading" flex="column">
             <div class="d-flex flex-row align-items-center justify-content-between gap-5 w-100">
                 <TextInput id="brand" label="Марка" v-model="vehicle.brand" readonly />
                 <TextInput id="model" label="Модель" v-model="vehicle.model" readonly />
