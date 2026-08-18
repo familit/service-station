@@ -1,7 +1,7 @@
 <script setup>
 import Sidebar from "../components/Sidebar.vue";
-import CarCard from "../components/Card/CarCard.vue";
-import WorkOrderCard from "../components/WorkOrderCard.vue";
+import VehicleCard from "../components/Card/VehicleCard.vue";
+import WorkOrdersCard from "../components/Card/WorkOrdersCard.vue";
 </script>
 
 <template>
@@ -11,8 +11,8 @@ import WorkOrderCard from "../components/WorkOrderCard.vue";
         <Sidebar />
       </div>
       <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-5">
-        <CarCard />
-        <WorkOrderCard />
+        <VehicleCard />
+        <WorkOrdersCard />
       </div>
     </div>
   </main>

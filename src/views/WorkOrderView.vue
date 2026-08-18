@@ -1,6 +1,6 @@
 <script setup>
 import Sidebar from "../components/Sidebar.vue";
-import WorkOrderCard from "../components/WorkOrderCard.vue";
+import WorkOrdersCard from "../components/Card/WorkOrdersCard.vue";
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import WorkOrderCard from "../components/WorkOrderCard.vue";
         <Sidebar />
       </div>
       <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-5">
-        <WorkOrderCard />
+        <WorkOrdersCard />
       </div>
     </div>
   </main>

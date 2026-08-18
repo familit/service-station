@@ -1,6 +1,6 @@
 <script setup>
-import WorkOrder from "./WorkOrder.vue";
-import Button from "./Modal/Button.vue";
+import WorkOrderAccordion from "../WorkOrderAccordion.vue";
+import Button from "../Modal/Button.vue";
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import Button from "./Modal/Button.vue";
     </div>
     <div class="card-body d-flex flex-row align-items-center justify-content-between gap-5">
       <div class="accordion w-100" id="accordionExample">
-        <WorkOrder />
+        <WorkOrderAccordion />
       </div>
     </div>
   </div>
