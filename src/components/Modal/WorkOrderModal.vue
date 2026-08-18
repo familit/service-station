@@ -3,16 +3,15 @@ import TextInput from "../Input/TextInput.vue";
 import NumberInput from "../Input/NumberInput.vue";
 import WorkOrderTable from "../WorkOrderTable.vue";
 import Button from "./Button.vue";
+import ModalHeader from "./ModalHeader.vue";
+import ModalFooter from "./ModalFooter.vue";
 </script>
 
 <template>
     <div class="modal fade" id="workOrderModal" tabindex="-1" aria-labelledby="workOrderModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <form action="/" class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="workOrderModalLabel">Добавление заказ наряда</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                <ModalHeader name="workOrder">Создание / изменение заказ-наряда</ModalHeader>
                 <div class="modal-body d-flex flex-column gap-3">
                     <div>
                         <WorkOrderTable />
@@ -24,10 +23,7 @@ import Button from "./Button.vue";
                         <Button />
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <input type="submit" class="btn btn-primary" value="Создать">
-                </div>
+                <ModalFooter />
             </form>
         </div>
     </div>

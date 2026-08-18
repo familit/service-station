@@ -5,6 +5,8 @@ import { METHOD_TYPES, isValidMethod } from "../../constants/methodTypes";
 import { reactive } from "vue";
 import {useClients} from "../../composables/useClients";
 import {useRouter} from "vue-router";
+import ModalHeader from "./ModalHeader.vue";
+import ModalFooter from "./ModalFooter.vue";
 
 const props = defineProps({
     method: {
@@ -43,19 +45,13 @@ const handleSubmit = async (event) => {
     <div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form @submit.prevent="handleSubmit" class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="clientModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                <ModalHeader name="client">Создание / изменение клиента</ModalHeader>
                 <div class="modal-body d-flex flex-column gap-3">
                     <TextInput v-model="formData.surname" id="surname" label="Фамилия" placeholder="Введите фамилию" required />
                     <TextInput v-model="formData.name" id="name" label="Имя" placeholder="Введите имя" required />
                     <PhoneInput v-model="formData.phone" id="phone" label="Телефон" placeholder="Введите телефон" required />
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <input type="submit" class="btn btn-primary" value="Создать">
-                </div>
+                <ModalFooter />
             </form>
         </div>
     </div>
