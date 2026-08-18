@@ -14,5 +14,5 @@
 
 <script setup>
 import SearchClient from "../components/SearchClient.vue";
-import ClientModal from "../components/ClientModal.vue";
+import ClientModal from "../components/Modal/ClientModal.vue";
 </script>

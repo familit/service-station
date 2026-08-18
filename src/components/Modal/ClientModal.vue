@@ -1,9 +1,9 @@
 <script setup>
-import TextInput from "./Input/TextInput.vue";
-import PhoneInput from "./Input/PhoneInput.vue";
-import { METHOD_TYPES, isValidMethod } from "../constants/methodTypes";
+import TextInput from "../Input/TextInput.vue";
+import PhoneInput from "../Input/PhoneInput.vue";
+import { METHOD_TYPES, isValidMethod } from "../../constants/methodTypes";
 import { reactive } from "vue";
-import {useClients} from "../composables/useClients";
+import {useClients} from "../../composables/useClients";
 import {useRouter} from "vue-router";
 
 const props = defineProps({

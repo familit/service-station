@@ -4,7 +4,7 @@ import ClientCard from '../components/Card/ClientCard.vue'
 import AutoCard from '../components/Card/AutoCard.vue'
 import WorkOrderCard from '../components/WorkOrderCard.vue'
 import VehiclesModal from '../components/Modal/VehiclesModal.vue'
-import ClientModal from '../components/ClientModal.vue'
+import ClientModal from '../components/Modal/ClientModal.vue'
 import WorkOrderModal from '../components/Modal/WorkOrderModal.vue'
 import {useRoute} from "vue-router";
 
