@@ -1,6 +1,7 @@
 import { api } from './firebase'
+import {COLLECTIONS} from "../constants/collections";
 
-const COLLECTION = 'workOrders'
+const COLLECTION = COLLECTIONS.WORK_ORDERS
 
 export const workOrdersApi = {
     getById(id) {

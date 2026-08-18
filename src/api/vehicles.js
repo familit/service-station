@@ -1,6 +1,7 @@
 import { api } from './firebase'
+import {COLLECTIONS} from "../constants/collections";
 
-const COLLECTION = 'vehicles'
+const COLLECTION = COLLECTIONS.VEHICLES
 
 export const vehiclesApi = {
     getById(id) {
@@ -37,7 +38,7 @@ export const vehiclesApi = {
         }
 
         if (data.vin) {
-            const exists = await this.existsByVin(data.vin)
+            const exists = await vehiclesApi.existsByVin(data.vin)
             if (exists) {
                 throw new Error('Автомобиль с таким VIN уже существует')
             }
