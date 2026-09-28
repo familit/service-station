@@ -1,7 +1,7 @@
 <script setup>
 import TextInput from "../Input/TextInput.vue";
 import NumberInput from "../Input/NumberInput.vue";
-import WorkOrderTable from "../WorkOrderTable.vue";
+import WorkOrderTable from "../Table/WorkOrderTable.vue";
 import Button from "./Button.vue";
 import ModalHeader from "./ModalHeader.vue";
 import ModalFooter from "./ModalFooter.vue";

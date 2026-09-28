@@ -1,31 +1,30 @@
 <script setup>
-
+defineProps({
+    title: String,
+})
 </script>
 
 <template>
+    <h6 class="h6">{{ title }}</h6>
     <table class="table">
         <thead>
             <tr>
                 <th>№ п/п</th>
-                <th>Работа / запчасть</th>
-                <th>Цена</th>
+                <th>Наименование работ</th>
                 <th>Количество</th>
+                <th>Стоимость</th>
                 <th>Сумма</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="4">Общая стоимость</th>
-                <td>0 руб.</td>
+                <th colspan="4">Итого работ</th>
+                <th>0 руб.</th>
             </tr>
         </tfoot>
     </table>
