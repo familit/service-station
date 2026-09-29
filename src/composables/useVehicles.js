@@ -43,11 +43,11 @@ export function useVehicles() {
         }
     }
 
-    const findByLicensePlate = async (licensePlate) => {
+    const findByPlate = async (plate) => {
         loading.value = true
         error.value = null
         try {
-            vehicle.value = await vehiclesApi.getByLicensePlate(licensePlate)
+            vehicle.value = await vehiclesApi.getByPlate(plate)
             if (!vehicle.value) {
                 error.value = 'Автомобиль с таким госномером не найден'
             }
@@ -65,7 +65,7 @@ export function useVehicles() {
         if (query.length === 17 && query.match(/^[A-HJ-NPR-Z0-9]+$/i)) {
             return await findByVin(query)
         } else if (query.match(/^[А-ЯA-Z0-9]+$/i)) {
-            return await findByLicensePlate(query)
+            return await findByPlate(query)
         } else {
             return await findById(query)
         }
@@ -93,7 +93,7 @@ export function useVehicles() {
         error,
         findById,
         findByVin,
-        findByLicensePlate,
+        findByPlate,
         search,
         getByClientId,
         addVehicle: vehiclesApi.add,

@@ -28,14 +28,11 @@ export function useClients() {
         loading.value = true
         error.value = null
         try {
-            client.value = await clientsApi.getByPhone(phone)
-            if (!client.value) {
-                error.value = 'Клиент с таким номером телефона не найден'
-            }
-            return client.value
+            const results = await clientsApi.searchByPhone(phone)
+            client.value = results
+            return results
         } catch (err) {
             error.value = err.message
-            console.error('Ошибка поиска по телефону:', err)
             throw err
         } finally {
             loading.value = false

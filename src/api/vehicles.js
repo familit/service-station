@@ -1,5 +1,5 @@
 import { api } from './firebase'
-import {COLLECTIONS} from "../constants/collections";
+import { COLLECTIONS } from "../constants/collections";
 
 const COLLECTION = COLLECTIONS.VEHICLES
 
@@ -13,8 +13,8 @@ export const vehiclesApi = {
             .then(results => results.length > 0 ? results[0] : null)
     },
 
-    getByLicensePlate(licensePlate) {
-        return api.search(COLLECTION, 'licensePlate', licensePlate)
+    getByPlate(plate) {
+        return api.search(COLLECTION, 'plate', plate)
             .then(results => results.length > 0 ? results[0] : null)
     },
 
@@ -27,8 +27,8 @@ export const vehiclesApi = {
         return !!vehicle
     },
 
-    async existsByLicensePlate(licensePlate) {
-        const vehicle = await this.getByLicensePlate(licensePlate)
+    async existsByPlate(plate) {
+        const vehicle = await this.getByPlate(plate)
         return !!vehicle
     },
 
@@ -44,8 +44,8 @@ export const vehiclesApi = {
             }
         }
 
-        if (data.licensePlate) {
-            const exists = await this.existsByLicensePlate(data.licensePlate)
+        if (data.plate) {
+            const exists = await this.existsByPlate(data.plate)
             if (exists) {
                 throw new Error('Автомобиль с таким госномером уже существует')
             }

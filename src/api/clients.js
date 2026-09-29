@@ -10,7 +10,13 @@ export const clientsApi = {
 
     getByPhone(phone) {
         return api.search(COLLECTION, 'phone', phone)
-            .then(results => results.length > 0 ? results[0] : null)
+            .then(results => {
+                if (results.length > 0) {
+                    return results[0]
+                } else {
+                    return null
+                }
+            })
     },
 
     async existsByPhone(phone) {
@@ -43,5 +49,16 @@ export const clientsApi = {
 
     getAll() {
         return api.getAll(COLLECTION)
+    },
+
+    async searchByPhone(phone) {
+        return api.search(COLLECTION, 'phone', phone)
+            .then(results => {
+                if (results.length > 0) {
+                    return results[0]
+                } else {
+                    return null
+                }
+            })
     }
 }
