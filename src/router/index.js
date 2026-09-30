@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import SearchView from "../views/SearchView.vue";
 import ClientCardView from "../views/ClientCardView.vue";
@@ -6,10 +6,10 @@ import VehicleView from "../views/VehicleView.vue";
 import WorkOrderView from "../views/WorkOrderView.vue";
 
 const routes = [
-    { path: '/', component: SearchView },
-    { path: '/client/:id', component: ClientCardView },
-    { path: '/vehicle/:id', component: VehicleView },
-    { path: '/work-order', component: WorkOrderView },
+    { path: '/', name: "MainView", component: SearchView },
+    { path: '/client/:id', name: "ClientView", component: ClientCardView },
+    { path: '/vehicle/:id', name: "VehiclesView", component: VehicleView },
+    { path: '/work-order', name: "WorkOrderView", component: WorkOrderView },
 ]
 
 export const router = createRouter({
