@@ -5,6 +5,7 @@ import WorkOrdersCard from "../components/Card/WorkOrdersCard.vue";
 import { useRoute } from "vue-router";
 import VehiclesModal from "../components/Modal/VehiclesModal.vue";
 import WorkOrderModal from "../components/Modal/WorkOrderModal.vue";
+import VehicleSelectorCard from "../components/Card/VehicleSelectorCard.vue";
 
 const id = useRoute().params.id;
 </script>
@@ -16,6 +17,7 @@ const id = useRoute().params.id;
                 <Sidebar />
             </div>
             <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-5">
+                <VehicleSelectorCard />
                 <VehicleCard :id="id" />
                 <WorkOrdersCard />
             </div>
