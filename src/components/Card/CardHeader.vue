@@ -5,11 +5,9 @@ import { ACTION, isValidAction } from "../../constants/card";
 const props = defineProps({
     modal: {
         type: String,
-        required: true,
     },
     action: {
         type: String,
-        required: true,
         validator: isValidAction
     }
 })

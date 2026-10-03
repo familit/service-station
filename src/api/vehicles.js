@@ -33,9 +33,7 @@ export const vehiclesApi = {
     },
 
     async add(data) {
-        if (!data.clientId) {
-            throw new Error('ID клиента обязателен')
-        }
+        if (!data.clientId) throw new Error('ID клиента обязателен')
 
         if (data.vin) {
             const exists = await vehiclesApi.existsByVin(data.vin)
@@ -45,7 +43,7 @@ export const vehiclesApi = {
         }
 
         if (data.plate) {
-            const exists = await this.existsByPlate(data.plate)
+            const exists = await vehiclesApi.existsByPlate(data.plate)
             if (exists) {
                 throw new Error('Автомобиль с таким госномером уже существует')
             }

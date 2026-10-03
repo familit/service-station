@@ -9,7 +9,6 @@ const route = useRoute()
 const { vehicles, getByClientId, loading } = useVehicles()
 onBeforeMount(async () => {
     await getByClientId(route.params.id)
-    console.log(vehicles.value);
 })
 </script>
 <template>
@@ -34,7 +33,7 @@ onBeforeMount(async () => {
                     <tr v-for="vehicle in vehicles" :key="vehicle.id">
                         <td>{{ vehicle.vin }}</td>
                         <td>{{ vehicle.plate }}</td>
-                        <td>{{ vehicle.brand }} {{vehicle.model}}</td>
+                        <td>{{ vehicle.brand }} {{ vehicle.model }}</td>
                         <td>{{ vehicle.age }}</td>
                         <td>{{ vehicle.mileage }}</td>
                         <td>

@@ -4,6 +4,7 @@ import { vehiclesApi } from '../api/vehicles'
 export function useVehicles() {
     const vehicle = ref(null)
     const vehicles = ref([])
+    const vehicleId = ref(null)
     const loading = ref(false)
     const error = ref(null)
 
@@ -61,6 +62,18 @@ export function useVehicles() {
         }
     }
 
+    const findByClientId = async (clientId) => {
+        loading.value = true
+        error.value = null
+        try {
+            vehicles.value = await vehiclesApi.getByClientId(clientId)
+        } catch (err) {
+            error.value = err.message
+        } finally {
+            loading.value = false
+        }
+    }
+
     const search = async (query) => {
         if (query.length === 17 && query.match(/^[A-HJ-NPR-Z0-9]+$/i)) {
             return await findByVin(query)
@@ -89,11 +102,13 @@ export function useVehicles() {
     return {
         vehicle,
         vehicles,
+        vehicleId,
         loading,
         error,
         findById,
         findByVin,
         findByPlate,
+        findByClientId,
         search,
         getByClientId,
         addVehicle: vehiclesApi.add,

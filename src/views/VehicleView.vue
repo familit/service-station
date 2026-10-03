@@ -2,12 +2,12 @@
 import Sidebar from "../components/Sidebar.vue";
 import VehicleCard from "../components/Card/VehicleCard.vue";
 import WorkOrdersCard from "../components/Card/WorkOrdersCard.vue";
-import { useRoute } from "vue-router";
 import VehiclesModal from "../components/Modal/VehiclesModal.vue";
 import WorkOrderModal from "../components/Modal/WorkOrderModal.vue";
 import VehicleSelectorCard from "../components/Card/VehicleSelectorCard.vue";
+import { ref } from "vue";
 
-const id = useRoute().params.id;
+const vehicleId = ref(null)
 </script>
 
 <template>
@@ -17,8 +17,8 @@ const id = useRoute().params.id;
                 <Sidebar />
             </div>
             <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-5">
-                <VehicleSelectorCard />
-                <VehicleCard :id="id" />
+                <VehicleSelectorCard @vehicleSelected="vehicleId = $event" />
+                <VehicleCard v-if="vehicleId" :id="vehicleId" />
                 <WorkOrdersCard />
             </div>
         </div>
