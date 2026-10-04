@@ -1,11 +1,7 @@
 <script setup>
 defineProps({
-    client: String,
-    phone: String,
-    vehicle: String,
-    vin: String,
-    plate: String,
-    mileage: String,
+    client: Object,
+    vehicle: Object,
 })
 </script>
 
@@ -14,21 +10,21 @@ defineProps({
         <tbody>
             <tr>
                 <td>Заказчик</td>
-                <td>{{ client }}</td>
+                <td>{{  client.surname }} {{ client.name }}</td>
                 <td>Номер телефона</td>
-                <td>{{ phone }}</td>
+                <td>{{ client.phone }}</td>
             </tr>
             <tr>
                 <td>Марка, модель, год выпуска</td>
-                <td>{{ vehicle }}</td>
+                <td>{{ vehicle.brand }} {{ vehicle.model }} {{vehicle.age}}</td>
                 <td>VIN</td>
-                <td>{{ vin }}</td>
+                <td>{{ vehicle.vin }}</td>
             </tr>
             <tr>
                 <td>Регистрационный знак</td>
-                <td>{{ plate }}</td>
+                <td>{{ vehicle.plate }}</td>
                 <td>Пробег</td>
-                <td>{{ mileage }}</td>
+                <td>{{ vehicle.mileage }}</td>
             </tr>
         </tbody>
     </table>

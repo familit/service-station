@@ -1,4 +1,6 @@
 <script setup>
+import DateInput from "../Input/DateInput.vue";
+
 defineProps({
     id: String,
     dateStart: String,
@@ -11,12 +13,10 @@ defineProps({
         <tbody>
             <tr>
                 <td rowspan="2">Заказ-наряд № {{ id }}</td>
-                <td>Дата начала работ</td>
-                <td>{{ dateStart }}</td>
+                <DateInput id="dateStart" label="Дата начала работ" />
             </tr>
             <tr>
-                <td>Дата окончания работ</td>
-                <td>{{ dateEnd }}</td>
+                <DateInput id="dateEnd" label="Дата окончания работ" />
             </tr>
         </tbody>
     </table>
