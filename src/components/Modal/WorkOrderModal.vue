@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, computed, watch } from "vue";
 import { useRoute } from "vue-router";
+import { Modal } from "bootstrap";
 import { useWorkOrders } from "../../composables/useWorkOrders";
 import ModalHeader from "./ModalHeader.vue";
 import ModalFooter from "./ModalFooter.vue";
@@ -18,12 +19,8 @@ const formData = reactive({
     clientId: route.params.id || null,
     vehicleId: null,
     number: `${Date.now().toString().slice(-6)}`,
-    status: 'new',
-    dates: {
-        received: new Date().toISOString().slice(0, 10),
-        startDate: new Date().toISOString().slice(0, 10),
-        endDate: new Date().toISOString().slice(0, 10)
-    },
+    startDate: new Date().toISOString().slice(0, 10),
+    endDate: new Date().toISOString().slice(0, 10),
     works: [],
     parts: []
 })
@@ -44,7 +41,14 @@ watch(
 
 const closeModal = () => {
     const el = document.getElementById('workOrderModal')
-    bootstrap.Modal.getInstance(el)?.hide()
+    const instance = el ? Modal.getOrCreateInstance(el) : null
+    instance?.hide()
+
+    // Fallback: ensure backdrop and body class removed if Bootstrap state is inconsistent
+    setTimeout(() => {
+        document.querySelectorAll('.modal-backdrop').forEach(n => n.remove())
+        document.body.classList.remove('modal-open')
+    }, 200)
 }
 
 const handleSubmit = async () => {
@@ -58,14 +62,7 @@ const handleSubmit = async () => {
     }
 
     try {
-        await addOrder({
-            ...formData,
-            totals: {
-                workTotal: workTotal.value,
-                partsTotal: partsTotal.value,
-                total: total.value
-            }
-        })
+        await addOrder({ ...formData })
         closeModal()
     } catch (e) {
         console.error(e)
@@ -82,16 +79,15 @@ const handleSubmit = async () => {
                 <div class="modal-body d-flex flex-column gap-4">
                     <div class="d-flex flex-row align-items-center justify-content-between gap-5 w-100">
                         <TextInput id="number" label="Номер" v-model="formData.number" readonly />
-                        <DateInput id="start" label="Дата начала" v-model="formData.dates.startDate" />
-                        <DateInput id="end" label="Дата окончания" v-model="formData.dates.endDate" />
+                        <DateInput id="start" label="Дата начала" v-model="formData.startDate" />
+                        <DateInput id="end" label="Дата окончания" v-model="formData.endDate" />
                     </div>
                     <VehicleSelectorCard
                         :client-id="formData.clientId" :model-value="formData.vehicleId"
                         @vehicle-selected="formData.vehicleId = $event"
                     />
                     <div v-if="formData.vehicleId && formData.clientId">
-                        <WorkOrderTable :id="formData.number" :vehicle="formData.vehicleId" :client="formData.clientId"
-                        />
+                        <WorkOrderTable :id="formData.number" :vehicle="formData.vehicleId" :client="formData.clientId" />
                     </div>
                     <AddItemsTableForm
                         v-model="formData.works" :fields="WORKS_FIELDS" :columns="WORKS_COLUMNS" title="Работы"
