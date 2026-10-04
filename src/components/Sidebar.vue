@@ -11,9 +11,18 @@ const id = route.params.id;
         </RouterLink>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <RouterLink :to="{ name: 'ClientView', params: { id: id } }" class="nav-link text-white">Карточка клиента</RouterLink>
-            <RouterLink :to="{ name: 'VehiclesView', params: { id: id } }" class="nav-link text-white">Карточка автомобиля</RouterLink>
-            <RouterLink :to="{ name: 'WorkOrderView', params: { id: id } }" class="nav-link text-white">Заказ-наряды</RouterLink>
+            <RouterLink :to="{
+                name: 'ClientView',
+                params: { id: id }
+            }" class="nav-link text-white">Карточка клиента</RouterLink>
+            <RouterLink :to="{
+                name: 'VehiclesView',
+                params: { id: id }
+            }" class="nav-link text-white">Карточка автомобиля</RouterLink>
+            <RouterLink :to="{
+                name: 'WorkOrderView',
+                params: { id: id }
+            }" class="nav-link text-white">Заказ-наряды</RouterLink>
         </ul>
         <hr>
         <RouterLink :to="{ name: 'MainView' }" class="nav-link">Выйти из клиента</RouterLink>

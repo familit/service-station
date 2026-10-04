@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount } from "vue";
+import { onBeforeMount, ref } from "vue";
 import { useVehicles } from "../../composables/useVehicles";
 import { useRoute } from "vue-router";
 import CardHeader from "./CardHeader.vue";
@@ -7,10 +7,13 @@ import CardBody from "./CardBody.vue";
 
 const route = useRoute()
 const { vehicles, getByClientId, loading } = useVehicles()
+const clientId = ref(route.params.id)
+
 onBeforeMount(async () => {
     await getByClientId(route.params.id)
 })
 </script>
+
 <template>
     <div class="card w-100">
         <CardHeader action="add" modal="vehicles">Информация об автомобилях</CardHeader>
@@ -37,7 +40,10 @@ onBeforeMount(async () => {
                         <td>{{ vehicle.age }}</td>
                         <td>{{ vehicle.mileage }}</td>
                         <td>
-                            <router-link :to="'/vehicle/' + vehicle.id">
+                            <router-link :to="{
+                                    name: 'VehicleView',
+                                    params: { clientId: clientId, vehicleId: vehicle.id }
+                                }">
                                 <i class="bi bi-arrow-right-circle"></i>
                             </router-link>
                         </td>

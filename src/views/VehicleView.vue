@@ -5,9 +5,16 @@ import WorkOrdersCard from "../components/Card/WorkOrdersCard.vue";
 import VehiclesModal from "../components/Modal/VehiclesModal.vue";
 import WorkOrderModal from "../components/Modal/WorkOrderModal.vue";
 import VehicleSelectorCard from "../components/Card/VehicleSelectorCard.vue";
-import { ref } from "vue";
+import {onBeforeMount, ref} from "vue";
+import {useRoute} from "vue-router";
 
 const vehicleId = ref(null)
+const route = useRoute()
+onBeforeMount( () => {
+    if (route.params.vehicleId) {
+        vehicleId.value = route.params.vehicleId
+    }
+})
 </script>
 
 <template>
