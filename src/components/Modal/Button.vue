@@ -1,16 +1,13 @@
 <script setup>
 defineProps({
-  modal: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    default: 'bi bi-plus-circle-fill',
-  }
+    modal: String,
+    image: { type: String, default: 'bi bi-plus' },
+    title: { type: String, default: '' }
 })
 </script>
 
 <template>
-  <button type="button" :class="'btn text-primary '+image" data-bs-toggle="modal" :data-bs-target="'#'+modal+'Modal'" />
+    <button type="button" class="btn btn-primary" :title="title" v-bind="$attrs">
+        <i :class="image"></i>
+    </button>
 </template>

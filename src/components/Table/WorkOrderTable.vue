@@ -1,6 +1,4 @@
 <script setup>
-import WorksTable from "./WorksTable.vue";
-import TitleTable from "./TitleTable.vue";
 import HeaderTable from "./HeaderTable.vue";
 import {onBeforeMount, ref, watch} from "vue";
 import { useVehicles } from "../../composables/useVehicles";
@@ -11,8 +9,6 @@ const props = defineProps({
     client: { type: String, default: null },
     vehicle: { type: String, default: null },
 })
-
-const date = ref(new Date())
 
 const { vehicle: vehicleData, findById: findVehicleById } = useVehicles()
 const { client: clientData, findById: findClientById } = useClients()
@@ -44,9 +40,7 @@ watch(
 
 <template>
     <template v-if="clientData && vehicleData">
-        <TitleTable :id="id" :date-start="date" :date-end="date" />
         <HeaderTable :client="clientData" :vehicle="vehicleData" />
-        <WorksTable />
     </template>
 
     <div v-else class="text-center py-3">

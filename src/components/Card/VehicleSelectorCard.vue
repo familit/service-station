@@ -3,28 +3,33 @@ import CardHeader from "./CardHeader.vue";
 import CardBody from "./CardBody.vue";
 import { onBeforeMount, ref, watch } from "vue";
 import { useVehicles } from "../../composables/useVehicles";
-import { useRoute } from "vue-router";
 
-const route = useRoute()
+const props = defineProps({
+    clientId: { type: String, required: true },
+    modelValue: { type: String, default: null }
+})
 const emit = defineEmits(['vehicleSelected'])
 
 const { vehicles, findByClientId, loading } = useVehicles()
-const selectedId = ref(route.params.vehicleId || '')
+const selectedId = ref(props.modelValue || '')
 
 onBeforeMount(async () => {
-    await findByClientId(route.params.id)
+    if (props.clientId) {
+        await findByClientId(props.clientId)
+    }
 })
 
-watch(
-    () => route.params.vehicleId,
-    (newId) => {
-        selectedId.value = newId || ''
+watch(() => props.clientId, async (newId) => {
+    if (newId) {
+        selectedId.value = ''
+        emit('vehicleSelected', null)
+        await findByClientId(newId)
     }
-)
+})
 
-if (route.params.vehicleId) {
-    emit('vehicleSelected', route.params.vehicleId)
-}
+watch(() => props.modelValue, (v) => {
+    selectedId.value = v || ''
+})
 
 const selectVehicle = (event) => {
     selectedId.value = event.target.value
@@ -36,10 +41,10 @@ const selectVehicle = (event) => {
     <div class="card w-100">
         <CardHeader>Выберите автомобиль</CardHeader>
         <CardBody :status="loading">
-            <select class="form-select" id="vehicle-selector" :value="selectedId" @change="selectVehicle">
+            <select class="form-select" :value="selectedId" @change="selectVehicle" >
                 <option value="" disabled>Выберите автомобиль</option>
-                <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id">
-                    {{ vehicle.brand }} {{ vehicle.model }}
+                <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id" >
+                    {{ vehicle.brand }} {{ vehicle.model }} {{ vehicle.plate }}
                 </option>
             </select>
         </CardBody>

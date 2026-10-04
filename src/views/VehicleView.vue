@@ -5,15 +5,27 @@ import WorkOrdersCard from "../components/Card/WorkOrdersCard.vue";
 import VehiclesModal from "../components/Modal/VehiclesModal.vue";
 import WorkOrderModal from "../components/Modal/WorkOrderModal.vue";
 import VehicleSelectorCard from "../components/Card/VehicleSelectorCard.vue";
-import {onBeforeMount, ref} from "vue";
-import {useRoute} from "vue-router";
+import { onBeforeMount, ref, watch } from "vue";
+import { useRoute } from "vue-router";
 
-const vehicleId = ref(null)
 const route = useRoute()
-onBeforeMount( () => {
-    if (route.params.vehicleId) {
-        vehicleId.value = route.params.vehicleId
-    }
+
+const clientId = ref(null)
+const vehicleId = ref(null)
+
+// ✅ Синхронизируем оба id из URL
+watch(
+    () => route.params,
+    (params) => {
+        clientId.value = params.id || null
+        vehicleId.value = params.vehicleId || null
+    },
+    { immediate: true }
+)
+
+onBeforeMount(() => {
+    clientId.value = route.params.id || null
+    vehicleId.value = route.params.vehicleId || null
 })
 </script>
 
@@ -24,9 +36,18 @@ onBeforeMount( () => {
                 <Sidebar />
             </div>
             <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-5">
-                <VehicleSelectorCard @vehicleSelected="vehicleId = $event" />
+
+                <!-- ✅ Передаём clientId пропсом -->
+                <VehicleSelectorCard
+                    v-if="clientId"
+                    :client-id="clientId"
+                    :model-value="vehicleId"
+                    @vehicle-selected="vehicleId = $event"
+                />
+
                 <VehicleCard v-if="vehicleId" :id="vehicleId" />
-                <WorkOrdersCard />
+
+                <WorkOrdersCard v-if="clientId" :client-id="clientId" />
             </div>
         </div>
     </main>
