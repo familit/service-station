@@ -47,7 +47,11 @@ onBeforeMount(() => {
 
                 <VehicleCard v-if="vehicleId" :id="vehicleId" />
 
-                <WorkOrdersCard v-if="clientId" :client-id="clientId" />
+                <WorkOrdersCard
+                    v-if="vehicleId"
+                    :vehicle-id="vehicleId"
+                    :client-id="clientId"
+                />
             </div>
         </div>
     </main>

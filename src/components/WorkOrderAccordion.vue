@@ -1,25 +1,49 @@
 <script setup>
+import { computed } from "vue";
 import WorkOrderTable from "./Table/WorkOrderTable.vue";
 
-defineProps({
-    id: Number,
-    vehicle: String,
-    mileage: Number,
-    cost: Number,
-})
+const props = defineProps({
+    order: { type: Object, required: true },
+});
+
+const collapseId = computed(() => `work-order-${props.order.id}`);
+const total = computed(() =>
+    [...(props.order.works || []), ...(props.order.parts || [])]
+        .reduce((sum, item) => sum + (Number(item.sum) || 0), 0)
+        .toFixed(2)
+);
 </script>
 
 <template>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        #{{ id }} {{ vehicle }} {{ mileage }} км {{ cost }} руб.
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-          <WorkOrderTable :id="id" date-start="01-01-1900" date-end="01-01-1900"/>
-      </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                :data-bs-target="`#${collapseId}`"
+                aria-expanded="false"
+                :aria-controls="collapseId"
+            >
+                Заказ-наряд №{{ order.number || order.id }}
+                <span class="ms-3 text-nowrap">{{ total }} руб.</span>
+            </button>
+        </h2>
+        <div
+            :id="collapseId"
+            class="accordion-collapse collapse"
+            data-bs-parent=".accordion"
+        >
+            <div class="accordion-body">
+                <p class="mb-2">
+                    Период: {{ order.startDate || "—" }} — {{ order.endDate || "—" }}
+                </p>
+                <WorkOrderTable
+                    :id="order.number"
+                    :vehicle="order.vehicleId"
+                    :client="order.clientId"
+                />
+            </div>
+        </div>
     </div>
-  </div>
 </template>

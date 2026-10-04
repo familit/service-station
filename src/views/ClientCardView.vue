@@ -20,7 +20,7 @@ const id = useRoute().params.id
             <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-5">
                 <ClientCard :id="id"/>
                 <VehiclesCard />
-                <WorkOrdersCard />
+                <WorkOrdersCard :client-id="id" />
             </div>
         </div>
     </main>
