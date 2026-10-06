@@ -8,9 +8,9 @@ import WorkOrderView from "../views/WorkOrderView.vue";
 const routes = [
     { path: '/', name: "MainView", component: SearchView },
     { path: '/client/:id', name: "ClientView", component: ClientCardView },
-    { path: '/client/:id/vehicle/', name: "VehiclesView", component: VehicleView },
+    { path: '/client/:id/vehicle', name: "VehiclesView", component: VehicleView },
     { path: '/client/:id/vehicle/:vehicleId', name: "VehicleView", component: VehicleView },
-    { path: '/work-order', name: "WorkOrderView", component: WorkOrderView },
+    { path: '/work-order/:id', name: "WorkOrderView", component: WorkOrderView },
 ]
 
 export const router = createRouter({

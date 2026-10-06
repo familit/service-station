@@ -11,6 +11,7 @@ const props = defineProps({
 const emit = defineEmits(['vehicleSelected'])
 
 const { vehicles, findByClientId, loading } = useVehicles()
+
 const selectedId = ref(props.modelValue || '')
 
 onBeforeMount(async () => {
@@ -33,7 +34,7 @@ watch(() => props.modelValue, (v) => {
 
 const selectVehicle = (event) => {
     selectedId.value = event.target.value
-    emit('vehicleSelected', selectedId.value)
+    emit('vehicleSelected', selectedId.value || null)
 }
 </script>
 
@@ -42,9 +43,9 @@ const selectVehicle = (event) => {
         <CardHeader>Выберите автомобиль</CardHeader>
         <CardBody :status="loading">
             <select class="form-select" :value="selectedId" @change="selectVehicle" >
-                <option value="" disabled>Выберите автомобиль</option>
+                <option value="">Все автомобили</option>
                 <option v-for="vehicle in vehicles" :key="vehicle.id" :value="vehicle.id" >
-                    {{ vehicle.brand }} {{ vehicle.model }} {{ vehicle.plate }}
+                    {{ vehicle.brand }} {{ vehicle.model }} ({{ vehicle.plate }})
                 </option>
             </select>
         </CardBody>
