@@ -1,6 +1,6 @@
 <template>
-  <main class="d-flex justify-content-center align-items-center min-vh-100">
-    <div class="card">
+  <main class="d-flex justify-content-center align-items-center min-vh-100 p-3">
+    <div class="card w-100" style="max-width: 32rem">
       <div class="card-header">Поиск клиента</div>
       <div class="card-body d-flex flex-column gap-5">
         <SearchClient />

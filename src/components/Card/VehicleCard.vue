@@ -27,12 +27,12 @@ watch(() => props.id, (newId) => load(newId))
         <CardHeader modal="vehicles" action="edit">Информация об автомобиле</CardHeader>
         <CardBody :status="loading" flex="column">
             <template v-if="vehicle">
-                <div class="d-flex flex-row align-items-center justify-content-between gap-5 w-100">
+                <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-3 w-100">
                     <TextInput id="brand" label="Марка" v-model="vehicle.brand" readonly />
                     <TextInput id="model" label="Модель" v-model="vehicle.model" readonly />
                     <TextInput id="vin" label="VIN" v-model="vehicle.vin" readonly />
                 </div>
-                <div class="d-flex flex-row align-items-center justify-content-between gap-5 w-100">
+                <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-3 w-100">
                     <NumberInput id="age" label="Год выпуска" v-model="vehicle.age" readonly />
                     <TextInput id="plate" label="Регистрационный знак" v-model="vehicle.plate" readonly />
                     <NumberInput id="mileage" label="Пробег" v-model="vehicle.mileage" readonly />

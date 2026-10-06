@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import Sidebar from "../components/Sidebar.vue";
+import AppLayout from "../components/AppLayout.vue";
 import VehicleSelectorCard from "../components/Card/VehicleSelectorCard.vue";
 import WorkOrdersCard from "../components/Card/WorkOrdersCard.vue";
 import WorkOrderModal from "../components/Modal/WorkOrderModal.vue";
@@ -19,20 +19,15 @@ watch(
 </script>
 
 <template>
-    <main class="container-fluid w-100 d-flex flex-wrap p-0">
-        <div class="row w-100">
-            <div class="col-sm-3">
-                <Sidebar />
-            </div>
-            <div class="col-sm-9 bg-secondary d-flex justify-content-center align-items-center flex-column gap-4 p-4">
-
-                <VehicleSelectorCard v-if="clientId" :client-id="clientId"
-                    :model-value="vehicleId" @vehicle-selected="vehicleId = $event" />
-
-                <WorkOrdersCard v-if="clientId" :client-id="clientId" :vehicle-id="vehicleId" />
-            </div>
-        </div>
-    </main>
+    <AppLayout>
+        <VehicleSelectorCard
+            v-if="clientId"
+            :client-id="clientId"
+            :model-value="vehicleId"
+            @vehicle-selected="vehicleId = $event"
+        />
+        <WorkOrdersCard v-if="clientId" :client-id="clientId" :vehicle-id="vehicleId" />
+    </AppLayout>
 
     <WorkOrderModal />
 </template>

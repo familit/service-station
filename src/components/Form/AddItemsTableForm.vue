@@ -53,43 +53,45 @@ const inputComponent = (type) => (type === 'number' ? NumberInput : TextInput)
 <template>
     <h6 v-if="title" class="mb-2">{{ title }}</h6>
 
-    <table class="table align-middle">
-        <thead class="table-light">
-            <tr>
-                <th v-for="col in columns" :key="col.key" :class="col.align ? `text-${col.align}` : ''">
-                    {{ col.label }}
-                </th>
-                <th></th>
-            </tr>
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th v-for="col in columns" :key="col.key" :class="col.align ? `text-${col.align}` : ''">
+                        {{ col.label }}
+                    </th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
-            <tr v-if="!items.length">
-                <td :colspan="columns.length + 1" class="text-center text-muted py-3">
-                    {{ emptyText }}
-                </td>
-            </tr>
-            <tr v-for="(row, i) in items" :key="i">
-                <td v-for="col in columns" :key="col.key" :class="col.align ? `text-${col.align}` : ''" >
-                    {{ col.format ? col.format(row[col.key], row) : row[col.key] }}
-                </td>
-                <td class="text-end">
-                    <button type="button" class="btn btn-sm btn-outline-danger" @click="removeRow(i)">
-                        <i class="bi bi-x" />
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-        <tfoot v-if="items.length">
-            <tr>
-                <td :colspan="columns.length - 1" class="text-end"><strong>Итого:</strong></td>
-                <td class="text-end"><strong>{{ total().toFixed(2) }}</strong></td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
-    <div class="d-flex flex-row align-items-end gap-3 w-100 mb-3">
+                <tr v-if="!items.length">
+                    <td :colspan="columns.length + 1" class="text-center text-muted py-3">
+                        {{ emptyText }}
+                    </td>
+                </tr>
+                <tr v-for="(row, i) in items" :key="i">
+                    <td v-for="col in columns" :key="col.key" :class="col.align ? `text-${col.align}` : ''">
+                        {{ col.format ? col.format(row[col.key], row) : row[col.key] }}
+                    </td>
+                    <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-outline-danger" @click="removeRow(i)">
+                            <i class="bi bi-x" />
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot v-if="items.length">
+                <tr>
+                    <td :colspan="columns.length - 1" class="text-end"><strong>Итого:</strong></td>
+                    <td class="text-end"><strong>{{ total().toFixed(2) }}</strong></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="d-flex flex-column flex-md-row flex-wrap align-items-stretch align-items-md-end gap-3 w-100 mb-3">
         <template v-for="field in fields" :key="field.key">
-            <component :is="inputComponent(field.type || 'text')" :id="field.key" :label="field.label"
+            <component class="flex-grow-1 min-w-0" :is="inputComponent(field.type || 'text')" :id="field.key" :label="field.label"
                 :placeholder="field.placeholder" :model-value="draft[field.key]"
                 @update:model-value="updateField(field.key, $event)" v-bind="field.attrs || {}"
             />

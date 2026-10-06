@@ -34,7 +34,7 @@ const total = computed(() =>
             class="accordion-collapse collapse"
             data-bs-parent=".accordion"
         >
-            <div class="accordion-body">
+            <div class="accordion-body overflow-x-hidden">
                 <p class="mb-2">
                     Период: {{ order.startDate || "—" }} — {{ order.endDate || "—" }}
                 </p>

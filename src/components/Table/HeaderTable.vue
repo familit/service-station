@@ -6,24 +6,30 @@ defineProps({
 </script>
 
 <template>
-    <table class="table">
+    <table class="table table-bordered table-sm w-100 mb-0">
         <tbody>
             <tr>
-                <td>Заказчик</td>
-                <td>{{  client.surname }} {{ client.name }}</td>
-                <td>Номер телефона</td>
-                <td>{{ client.phone }}</td>
+                <th scope="row" class="w-50">Заказчик</th>
+                <td class="text-break">{{ client.surname }} {{ client.name }}</td>
             </tr>
             <tr>
-                <td>Марка, модель, год выпуска</td>
-                <td>{{ vehicle.brand }} {{ vehicle.model }} {{vehicle.age}}</td>
-                <td>VIN</td>
-                <td>{{ vehicle.vin }}</td>
+                <th scope="row">Номер телефона</th>
+                <td class="text-break">{{ client.phone }}</td>
             </tr>
             <tr>
-                <td>Регистрационный знак</td>
-                <td>{{ vehicle.plate }}</td>
-                <td>Пробег</td>
+                <th scope="row">Марка, модель, год выпуска</th>
+                <td class="text-break">{{ vehicle.brand }} {{ vehicle.model }} {{ vehicle.age }}</td>
+            </tr>
+            <tr>
+                <th scope="row">VIN</th>
+                <td class="text-break">{{ vehicle.vin }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Регистрационный знак</th>
+                <td class="text-break">{{ vehicle.plate }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Пробег</th>
                 <td>{{ vehicle.mileage }}</td>
             </tr>
         </tbody>

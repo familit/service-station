@@ -5,7 +5,7 @@ const route = useRoute();
 const id = route.params.id;
 </script>
 <template>
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark min-vh-100 w-100">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100 w-100">
         <RouterLink :to="{ name: 'MainView' }" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-4">service-station</span>
         </RouterLink>

@@ -44,7 +44,7 @@ const handleSubmit = async (event) => {
 
 <template>
     <div class="modal fade" id="vehiclesModal" tabindex="-1" aria-labelledby="vehiclesModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
             <form @submit.prevent="handleSubmit" class="modal-content">
                 <ModalHeader name="vehicles">Создание / изменение автомобиля</ModalHeader>
                 <div class="modal-body d-flex flex-column gap-3">

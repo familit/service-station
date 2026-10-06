@@ -44,7 +44,6 @@ const closeModal = () => {
     const instance = el ? Modal.getOrCreateInstance(el) : null
     instance?.hide()
 
-    // Fallback: ensure backdrop and body class removed if Bootstrap state is inconsistent
     setTimeout(() => {
         document.querySelectorAll('.modal-backdrop').forEach(n => n.remove())
         document.body.classList.remove('modal-open')
@@ -73,14 +72,14 @@ const handleSubmit = async () => {
 
 <template>
     <div class="modal fade" id="workOrderModal" tabindex="-1" aria-labelledby="workOrderModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable modal-fullscreen-sm-down">
             <form @submit.prevent="handleSubmit" class="modal-content">
                 <ModalHeader name="workOrder">Новый заказ-наряд</ModalHeader>
                 <div class="modal-body d-flex flex-column gap-4">
-                    <div class="d-flex flex-row align-items-center justify-content-between gap-5 w-100">
-                        <TextInput id="number" label="Номер" v-model="formData.number" readonly />
-                        <DateInput id="start" label="Дата начала" v-model="formData.startDate" />
-                        <DateInput id="end" label="Дата окончания" v-model="formData.endDate" />
+                    <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center justify-content-between gap-3 w-100">
+                        <TextInput class="w-100" id="number" label="Номер" v-model="formData.number" readonly />
+                        <DateInput class="w-100" id="start" label="Дата начала" v-model="formData.startDate" />
+                        <DateInput class="w-100" id="end" label="Дата окончания" v-model="formData.endDate" />
                     </div>
                     <VehicleSelectorCard
                         :client-id="formData.clientId" :model-value="formData.vehicleId"

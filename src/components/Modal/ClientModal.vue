@@ -3,8 +3,8 @@ import TextInput from "../Input/TextInput.vue";
 import PhoneInput from "../Input/PhoneInput.vue";
 import { METHOD_TYPES, isValidMethod } from "../../constants/methodTypes";
 import { reactive } from "vue";
-import {useClients} from "../../composables/useClients";
-import {useRouter} from "vue-router";
+import { useClients } from "../../composables/useClients";
+import { useRouter } from "vue-router";
 import ModalHeader from "./ModalHeader.vue";
 import ModalFooter from "./ModalFooter.vue";
 
@@ -43,7 +43,7 @@ const handleSubmit = async (event) => {
 
 <template>
     <div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
             <form @submit.prevent="handleSubmit" class="modal-content">
                 <ModalHeader name="client">Создание / изменение клиента</ModalHeader>
                 <div class="modal-body d-flex flex-column gap-3">

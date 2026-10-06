@@ -37,8 +37,7 @@ watch(
 
         <CardBody :status="loading">
             <div v-if="!orders?.length" class="text-center py-4 text-muted">Заказ-наряды отсутствуют</div>
-
-            <div v-else class="accordion w-100" id="workOrdersAccordion">
+            <div v-else class="accordion w-100 overflow-x-hidden" id="workOrdersAccordion">
                 <WorkOrderAccordion v-for="(order, i) in orders" :key="order.id" :order="order" :index="i" />
             </div>
         </CardBody>

@@ -1,6 +1,6 @@
 <script setup>
 import HeaderTable from "./HeaderTable.vue";
-import {onBeforeMount, ref, watch} from "vue";
+import { onBeforeMount, watch } from "vue";
 import { useVehicles } from "../../composables/useVehicles";
 import { useClients } from "../../composables/useClients";
 
@@ -40,7 +40,9 @@ watch(
 
 <template>
     <template v-if="clientData && vehicleData">
-        <HeaderTable :client="clientData" :vehicle="vehicleData" />
+        <div class="w-100 overflow-x-auto">
+            <HeaderTable :client="clientData" :vehicle="vehicleData" />
+        </div>
     </template>
 
     <div v-else class="text-center py-3">
