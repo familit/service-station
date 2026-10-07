@@ -1,29 +1,41 @@
 name: Release
+
 on:
     push:
-        branches:
-            - main
+        branches: [main]
 
 permissions:
-    contents: read
+    contents: write
+    issues: write
+    pull-requests: write
 
 jobs:
     release:
-        name: Release
         runs-on: ubuntu-latest
-        permissions:
-            contents: write
-            issues: write
-            pull-requests: write
-            id-token: write
         steps:
-            - uses: actions/checkout@v3
+            - name: Checkout
+              uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - uses: actions/setup-node@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
               with:
-                  node-version: "lts/*"
-            - run: yarn install
-            - run: npx semantic-release
+                  node-version: 20
+
+            - name: Enable Corepack
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.14.1 --activate
+                  yarn --version
+
+            - name: Install dependencies
+              run: yarn install --immutable
+
+            - name: Build
+              run: yarn build
+
+            - name: Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: yarn release
