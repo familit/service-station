@@ -11,8 +11,12 @@ export default defineConfig({
     },
     base: '/service-station/',
     server: {
+        host: true,
         port: 3000,
-        open: true
+        strictPort: true,
+        watch: {
+            usePolling: true,
+        },
     },
     css: {
         preprocessorOptions: {

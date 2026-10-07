@@ -11,5 +11,7 @@ App for service station to manage of micro business
 ## Deploy local
 
 ```bash
-yarn dev
+yarn install
+docker build -t servise-station .
+docker run -itd -p 3000:3000 -v $PWD:/app --name service-station service-station
 ```
