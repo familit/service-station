@@ -16,16 +16,23 @@ jobs:
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version-file: .nvmrc
+
+            - name: Enable Corepack
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.14.1 --activate
+                  yarn --version
+
             - name: Install dependencies
-              run: npm clean-install
-            - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-              run: npm audit signatures
+              run: yarn install --immutable
+
             - name: Run lint, tests, and other verification
-              run: npm test
+              run: yarn build
 
     release:
         name: Release
@@ -41,15 +48,22 @@ jobs:
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: "lts/*"
+                  node-version-file: .nvmrc
+
+            - name: Enable Corepack
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.14.1 --activate
+                  yarn --version
+
             - name: Install dependencies
-              run: npm clean-install
-            - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-              run: npm audit signatures
+              run: yarn install --immutable
+
             - name: Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: npx release
+              run: yarn release
