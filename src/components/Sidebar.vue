@@ -1,5 +1,6 @@
 <script setup>
 import { useRoute } from "vue-router";
+import packageJson from "../../package.json";
 
 const route = useRoute();
 const id = route.params.id;
@@ -26,5 +27,10 @@ const id = route.params.id;
         </ul>
         <hr>
         <RouterLink :to="{ name: 'MainView' }" class="nav-link">Выйти из клиента</RouterLink>
+        <hr>
+        <div class="d-flex flex-row justify-content-between align-items-center w-100">
+            <p>v{{ packageJson.version }}</p>
+            <p>Шефер А.В.</p>
+        </div>
     </div>
 </template>
