@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/familit/service-station/compare/v1.0.0...v1.1.0) (2026-10-11)
+
+### Features
+
+* added display version app ([ac63bf5](https://github.com/familit/service-station/commit/ac63bf5775832cfdc9c2b95b0738459f36ab7648))
+
 ## 1.0.0 (2026-10-11)
 
 ### Features
